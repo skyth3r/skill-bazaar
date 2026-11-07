@@ -1,0 +1,6 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "post-merge",
+  "version": "0.1.0",
+  "description": "Clean up after a merged PR: update main, remove the worktree, delete the branch"
+}

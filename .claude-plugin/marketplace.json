@@ -5,5 +5,11 @@
     "name": "Akash Goswami",
     "url": "https://akashgoswami.com"
   },
-  "plugins": []
+  "plugins": [
+    {
+      "name": "post-merge",
+      "source": "./plugins/post-merge",
+      "description": "Clean up after a merged PR: update main, remove the worktree, delete the branch"
+    }
+  ]
 }
