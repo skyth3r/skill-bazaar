@@ -1,0 +1,41 @@
+name: Conventional Commits
+
+on:
+  pull_request:
+    types: [opened, edited, reopened, synchronize]
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
+      - name: Lint PR title and commit subjects
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          set -uo pipefail
+          pattern='^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\([^()]+\))?!?: .+'
+          status=0
+          check() {
+            local what=$1 subject=$2
+            if ! printf '%s' "$subject" | grep -Eq "$pattern"; then
+              echo "::error::$what is not Conventional Commits: $subject"
+              status=1
+            elif [ "${#subject}" -ge 72 ]; then
+              echo "::error::$what subject is ${#subject} chars, limit is 71: $subject"
+              status=1
+            fi
+          }
+          check "PR title" "$PR_TITLE"
+          while IFS= read -r subject; do
+            check "Commit" "$subject"
+          done < <(git log --format=%s "$BASE_SHA"..HEAD)
+          exit $status
