@@ -1,0 +1,34 @@
+name: Validate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - run: npm install -g @anthropic-ai/claude-code@2.1.319
+
+      - name: Validate marketplace and plugins
+        run: |
+          set -e
+          # ponytail: no --strict while plugins[] is empty (warns), restore with the first plugin
+          claude plugin validate .
+          shopt -s nullglob
+          for p in plugins/*/; do claude plugin validate "$p" --strict; done
+
+      - name: Codex marketplace lists the same plugins
+        run: |
+          diff <(jq -r '.plugins[].name' .claude-plugin/marketplace.json | sort) \
+               <(jq -r '.plugins[].name' .agents/plugins/marketplace.json | sort)

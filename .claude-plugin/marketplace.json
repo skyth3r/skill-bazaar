@@ -1,0 +1,9 @@
+{
+  "name": "skill-bazaar",
+  "description": "Akash's skill marketplace",
+  "owner": {
+    "name": "Akash Goswami",
+    "url": "https://akashgoswami.com"
+  },
+  "plugins": []
+}
