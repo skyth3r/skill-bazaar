@@ -23,8 +23,7 @@ jobs:
       - name: Validate marketplace and plugins
         run: |
           set -e
-          # ponytail: no --strict while plugins[] is empty (warns), restore with the first plugin
-          claude plugin validate .
+          claude plugin validate . --strict
           shopt -s nullglob
           for p in plugins/*/; do claude plugin validate "$p" --strict; done
 

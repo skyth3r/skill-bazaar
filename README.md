@@ -2,6 +2,14 @@
 
 [Akash's](https://akashgoswami.com) plugin marketplace for Claude Code, Codex and other agents.
 
+## Plugins
+
+| Plugin | What it does |
+|---|---|
+| `post-merge` | Clean up after a merged PR: update main, remove the worktree, delete the branch |
+
+Claude Code: `/plugin install post-merge --marketplace skyth3r/skill-bazaar`
+
 ## Install
 
 **Claude Code**
