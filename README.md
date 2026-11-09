@@ -7,8 +7,14 @@
 | Plugin | What it does |
 |---|---|
 | `post-merge` | Clean up after a merged PR: update main, remove the worktree, delete the branch |
+| `ship-pr` | Run local checks, push a branch, open the PR, then watch CI to green with capped fix rounds |
 
-Claude Code: `/plugin install post-merge --marketplace skyth3r/skill-bazaar`
+Claude Code, one step per plugin:
+
+```
+/plugin install post-merge --marketplace skyth3r/skill-bazaar
+/plugin install ship-pr --marketplace skyth3r/skill-bazaar
+```
 
 ## Install
 

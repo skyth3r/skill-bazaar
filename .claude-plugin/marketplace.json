@@ -10,6 +10,11 @@
       "name": "post-merge",
       "source": "./plugins/post-merge",
       "description": "Clean up after a merged PR: update main, remove the worktree, delete the branch"
+    },
+    {
+      "name": "ship-pr",
+      "source": "./plugins/ship-pr",
+      "description": "Run local checks, push a branch, open the PR, then watch CI to green with capped fix rounds"
     }
   ]
 }
