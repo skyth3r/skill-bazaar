@@ -7,6 +7,11 @@
   },
   "plugins": [
     {
+      "name": "implement",
+      "source": "./plugins/implement",
+      "description": "Implement a Jira ticket, Linear issue or plan end to end: scope, build, simplify, review rounds, ship"
+    },
+    {
       "name": "post-merge",
       "source": "./plugins/post-merge",
       "description": "Clean up after a merged PR: update main, remove the worktree, delete the branch"
