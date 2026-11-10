@@ -1,0 +1,6 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "implement",
+  "version": "0.1.0",
+  "description": "Implement a Jira ticket, Linear issue or plan end to end: scope, build, simplify, review rounds, ship"
+}

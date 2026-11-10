@@ -6,12 +6,14 @@
 
 | Plugin | What it does |
 |---|---|
+| `implement` | Implement a Jira ticket, Linear issue or plan end to end: scope, build, simplify, review rounds, ship |
 | `post-merge` | Clean up after a merged PR: update main, remove the worktree, delete the branch |
 | `ship-pr` | Run local checks, push a branch, open the PR, then watch CI to green with capped fix rounds |
 
 Claude Code, one step per plugin:
 
 ```
+/plugin install implement --marketplace skyth3r/skill-bazaar
 /plugin install post-merge --marketplace skyth3r/skill-bazaar
 /plugin install ship-pr --marketplace skyth3r/skill-bazaar
 ```
